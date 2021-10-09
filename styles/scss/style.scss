@@ -1,0 +1,150 @@
+@import "var";
+@import "mixins";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: $bgColor;
+}
+.header {
+    background-color: $primaryColor;
+    display: flex;
+    justify-content: space-between;
+    height: 15vh;
+    align-items: center;
+    padding: 0.8rem 3rem;
+}
+.hamburger {
+    display: none;
+    flex-direction: column;
+    border-radius: 50%;
+    span {
+        height: 3px;
+        width: 20px;
+        margin: 2px;
+        border-radius: 30%;
+        background-color: $secondryColor;
+    }
+}
+.logo-name {
+    @include textStyle(1.6rem, 700, $secondryColor);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    img {
+        width: 50px;
+        border-radius: 50%;
+    }
+    nav {
+        margin-right: 20px;
+    }
+    ul {
+        // display: grid;
+        // grid-template: auto / 75px 90px 90px;
+        display: flex;
+        list-style: none;
+    }
+    a {
+        @include textStyle(1.1rem, bold, $secondryColor);
+        text-decoration: none;
+        padding: 10px;
+        transition: all 0.2s ease-in;
+        &:hover {
+            color: $textColor;
+        }
+    }
+}
+
+.main {
+    display: flex;
+    margin: 2rem 3rem;
+    aside {
+        @include bodyStyle;
+        @include borderStyle;
+        margin-right: 1rem;
+        width: 30%;
+    }
+    main {
+        @include bodyStyle;
+        @include borderStyle;
+        width: 70%;
+
+        img {
+            width: 200px;
+            @include borderStyle;
+            margin-bottom: 40px;
+        }
+        h2 {
+            @include textStyle(2rem, 300, $textColor);
+            margin: 20px auto;
+        }
+        p {
+            @include textStyle(1rem, bold, $textColor);
+        }
+    }
+}
+.course {
+    height: 100px;
+    width: 90%;
+    margin: auto 0;
+    background-color: $primaryColor;
+    padding: 30px 20px;
+    @include borderStyle;
+    line-height: 50px;
+    @include textStyle(1.1rem, bold, $secondryColor);
+    text-align: center;
+}
+.main-items {
+    display: flex;
+    margin: 2rem 3rem;
+    justify-content: space-between;
+}
+.item {
+    @include itemStyle;
+    @include borderStyle;
+    margin-top: 20px;
+    img {
+        width: 100%;
+    }
+    p {
+        @include textStyle(1rem, 300, $textColor);
+        text-align: justify;
+        padding: 5px 15px;
+    }
+    a {
+        display: block;
+        text-decoration: none;
+        @include textStyle(0.7rem, 300, $primaryColor);
+        margin: 10px;
+    }
+}
+
+@include media(M) {
+    .hamburger {
+        display: flex;
+    }
+    .navbar {
+        display: none;
+    }
+    .main {
+        flex-direction: column-reverse;
+        main {
+            width: 100%;
+        }
+        aside {
+            width: 100%;
+            margin-top: 20px;
+        }
+    }
+    .main-items {
+        flex-wrap: wrap;
+    }
+    .item {
+        width: 47%;
+    }
+}

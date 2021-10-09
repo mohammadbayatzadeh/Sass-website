@@ -1,0 +1,35 @@
+@mixin textStyle($size, $weight, $color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+@mixin bodyStyle {
+    display: flex;
+    background-color: $secondryColor;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 500px;
+}
+@mixin borderStyle {
+    border-radius: 20px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.205);
+    overflow: hidden;
+}
+@mixin itemStyle {
+    width: 23%;
+    height: auto;
+    background-color: $secondryColor;
+}
+@mixin media($size) {
+    @if ($size == M) {
+        @media (max-width: 768px) {
+            @content;
+        }
+    }
+    @if ($size == L) {
+        @media (mix-width: 768px) and (max-width: 1200px) {
+            @content;
+        }
+    }
+}
